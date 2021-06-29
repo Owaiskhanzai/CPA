@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "975292442303",
+    "project_id": "croppriceappdb",
+    "storage_bucket": "croppriceappdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975292442303:android:eb38f2c2e39f037376880a",
+        "android_client_info": {
+          "package_name": "com.example.cpa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975292442303-nm5a39nppcucimhm7tpk52jmfuj2qde9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0UogTSrgVJb0x-KwjVYZmTN0iOeqQyLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "975292442303-nm5a39nppcucimhm7tpk52jmfuj2qde9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
