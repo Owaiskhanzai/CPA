@@ -40,33 +40,37 @@ public class Signin extends Activity {
             @Override
             public void onClick(View v) {
 
-                mAuth.createUserWithEmailAndPassword(emaillogin.getText().toString().trim(),passwordlogin.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-
-                        if(task.isSuccessful()){
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(Signin.this,"login Successfull",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), Signin.class));
-
-
-                        }else{
-
-                            Toast.makeText(Signin.this,"Error!"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-
+                loginUser();
 
             }
         });
 
 
 
+    }
+    public void loginUser(){
+
+mAuth.signInWithEmailAndPassword(emaillogin.getText().toString().trim(),passwordlogin.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    @Override
+    public void onComplete(@NonNull Task<AuthResult> task) {
+
+        if(task.isSuccessful()){
+
+            Toast.makeText(Signin.this,"Login Successfully",Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getApplicationContext(), Dashboard.class));
+
+        }
+        else{
+
+            Toast.makeText(Signin.this,"Error!"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
+});
 
     }
 
-
 }
+
+//emaillogin.getText().toString().trim(),passwordlogin.getText().toString().trim()
