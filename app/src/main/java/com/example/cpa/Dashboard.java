@@ -20,7 +20,8 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         fauth=FirebaseAuth.getInstance();
-        logoutbtn.findViewById(R.id.loginbtn);
+
+        logoutbtn=findViewById(R.id.logoutbtn);
 
         logoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,6 +29,7 @@ public class Dashboard extends AppCompatActivity {
 
                 fauth.signOut();
                 startActivity(new Intent(getApplicationContext(), Signin.class));
+                finish();
 
             }
         });

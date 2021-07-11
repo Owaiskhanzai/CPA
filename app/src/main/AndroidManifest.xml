@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CPA">
-        <activity android:name=".Dashboard"></activity>
-        <activity android:name=".Signin" />
-        <activity android:name=".Register">
+        <activity android:name=".Register"></activity>
+        <activity android:name=".Dashboard" />
+        <activity android:name=".Signin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,7 +22,10 @@ public class Signin extends Activity {
     EditText emaillogin;
     EditText passwordlogin;
     Button loginbtn;
+    TextView registerhere;
     FirebaseAuth mAuth;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +35,18 @@ public class Signin extends Activity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        emaillogin.findViewById(R.id.emaillogin);
-        passwordlogin.findViewById(R.id.passwordlogin);
+        emaillogin=findViewById(R.id.emaillogin);
+        passwordlogin=findViewById(R.id.passwordlogin);
+        registerhere=findViewById(R.id.registerhere);
         loginbtn=findViewById(R.id.loginbtn);
 
+        registerhere.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getApplicationContext(),Register.class));
+            }
+        });
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
