@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,9 +14,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static android.content.ContentValues.TAG;
 
 public class Register extends AppCompatActivity {
 
@@ -24,7 +34,8 @@ public class Register extends AppCompatActivity {
     TextView loginhere;
     FirebaseAuth fauth;
     ProgressBar progressBar;
-
+    FirebaseFirestore fstore;
+    String userID;
 
 
     @Override
@@ -41,6 +52,7 @@ public class Register extends AppCompatActivity {
         loginhere=findViewById(R.id.loginhere);
 
         fauth=FirebaseAuth.getInstance();
+        fstore=FirebaseFirestore.getInstance();
         progressBar=findViewById(R.id.progressBar);
 
         if(fauth.getCurrentUser() !=null){
@@ -60,9 +72,10 @@ public class Register extends AppCompatActivity {
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String firstname=mfirstname.getText().toString().trim();
                 String email =  memail.getText().toString().trim();
                 String password= mpassword.getText().toString().trim();
+                String phone=mphone.getText().toString().trim();
 
 
                 if(TextUtils.isEmpty(email)){
@@ -94,11 +107,37 @@ public class Register extends AppCompatActivity {
 
                         if(task.isSuccessful()){
 
+
                             Toast.makeText(Register.this,"User Created",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), Signin.class));
+                            userID=fauth.getCurrentUser().getUid();
+                            DocumentReference documentReference=fstore.collection("user").document(userID);
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("fname", firstname);
+                            user.put("email", email);
+                            user.put("password", password);
+                            user.put("phone", phone);
+                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+
+                                    Log.d(TAG,"On Success:user profile is created for"+ userID);
 
 
-                        }else{
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w(TAG, "Error adding document", e);
+
+                                };
+
+
+                                });
+                           startActivity(new Intent(getApplicationContext(), Signin.class));
+
+
+                        }
+                        else{
 
                             Toast.makeText(Register.this,"Error!"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                         }
