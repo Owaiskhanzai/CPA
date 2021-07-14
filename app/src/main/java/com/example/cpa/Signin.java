@@ -69,7 +69,7 @@ mAuth.signInWithEmailAndPassword(emaillogin.getText().toString().trim(),password
         if(task.isSuccessful()){
 
             Toast.makeText(Signin.this,"Login Successfully",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getApplicationContext(), Dashboard.class));
+            startActivity(new Intent(getApplicationContext(), DashActivity.class));
 
         }
         else{
