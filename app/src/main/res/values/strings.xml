@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CPA</string>
+
+
+    <string-array name="usertype">
+        <item>Seller</item>
+        <item>Buyer</item>
+    </string-array>
+
 </resources>
