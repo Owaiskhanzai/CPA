@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.cpa.R;
 import com.example.cpa.Crops;
-import com.example.cpa.three;
+import com.example.cpa.Manage;
 import com.example.cpa.Auctions;
 
 /**
@@ -43,7 +43,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment=new Auctions();
                 break;
             case  2:
-                fragment=new three();
+                fragment=new Manage();
 
         }
                 return fragment;

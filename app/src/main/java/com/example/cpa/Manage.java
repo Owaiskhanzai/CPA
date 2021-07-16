@@ -1,5 +1,7 @@
 package com.example.cpa;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,13 +9,24 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link three#newInstance} factory method to
+ * Use the {@link Manage#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class three extends Fragment {
+
+
+public class Manage extends Fragment {
+
+    Button signoutbtn;
+    Activity referenceActivity;
+    View parentHolder;
+    FirebaseAuth fauth;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +37,7 @@ public class three extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public three() {
+    public Manage() {
         // Required empty public constructor
     }
 
@@ -37,8 +50,8 @@ public class three extends Fragment {
      * @return A new instance of fragment three.
      */
     // TODO: Rename and change types and number of parameters
-    public static three newInstance(String param1, String param2) {
-        three fragment = new three();
+    public static Manage newInstance(String param1, String param2) {
+        Manage fragment = new Manage();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -53,12 +66,34 @@ public class three extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_three, container, false);
+
+        parentHolder = inflater.inflate(R.layout.fragment_three, container,
+                false);
+
+        signoutbtn = (Button) parentHolder.findViewById(R.id.signoutbtn);
+        fauth=FirebaseAuth.getInstance();
+
+        signoutbtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                fauth.signOut();
+                startActivity(new Intent(referenceActivity.getApplicationContext(), Signin.class));
+               referenceActivity.finish();
+
+
+            }
+        });
+        return parentHolder;
+
+
+       // return inflater.inflate(R.layout.fragment_three, container, false);
     }
 }
