@@ -61,7 +61,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case  1:
                 return "Auctions";
             case  2:
-                return "Other";
+                return "Manage";
         }
             return null;
         //  return mContext.getResources().getString(TAB_TITLES[position]);

@@ -19,7 +19,17 @@ public class mem {
         this.usertype = usertype;
     }
 
+    private String croptype;
 
+
+
+    public String getcroptype() {
+        return croptype;
+    }
+
+    public void setcroptype(String croptype) {
+        this.croptype = croptype;
+    }
 
 
 
