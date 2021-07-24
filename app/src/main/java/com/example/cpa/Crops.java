@@ -82,20 +82,29 @@ public class Crops extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        _nameofcrop = (EditText) parentHolder.findViewById(R.id._nameofcrop);
-        _quantity = (EditText) parentHolder.findViewById(R.id._quantity);
-        _priceperunit = (EditText) parentHolder.findViewById(R.id._priceperunit);
-        _expirydate = (EditText) parentHolder.findViewById(R.id._expirydate);
-        _phonenumber = (EditText) parentHolder.findViewById(R.id._phonenumber);
-        _address = (EditText) parentHolder.findViewById(R.id._address);
-        _quality = (EditText) parentHolder.findViewById(R.id._quality);
-        _typesofcropspinner = (Spinner) parentHolder.findViewById(R.id._typesofcropspinner);
+    }
 
-        submitbtn = (Button) parentHolder.findViewById(R.id.submitbtn);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+
+
+        parentHolder = inflater.inflate(R.layout.fragment_one, container,
+                false);
+        _nameofcrop = (EditText) parentHolder.findViewById(R.id._nameofcrop);
+        _quantity =  (EditText)parentHolder.findViewById(R.id._quantity);
+        _priceperunit = (EditText) parentHolder.findViewById(R.id._priceperunit);
+        _expirydate =(EditText)  parentHolder.findViewById(R.id._expirydate);
+        _phonenumber =  (EditText)parentHolder.findViewById(R.id._phonenumber);
+        _address =  (EditText)parentHolder.findViewById(R.id._address);
+        _quality = (EditText) parentHolder.findViewById(R.id._quality);
+        _typesofcropspinner =  parentHolder.findViewById(R.id._typesofcropspinner);
+
+        submitbtn =  (Button) parentHolder.findViewById(R.id.submitbtn);
 
 
         db = FirebaseFirestore.getInstance();
-
 
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,13 +125,6 @@ public class Crops extends Fragment {
 
             }
         });
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
 
         return inflater.inflate(R.layout.fragment_one, container, false);
     }
