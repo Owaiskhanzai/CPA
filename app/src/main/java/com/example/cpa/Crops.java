@@ -39,6 +39,7 @@ public class Crops extends Fragment {
     Spinner _typesofcropspinner;
     Button submitbtn;
     View parentHolder;
+    Activity referenceActivity;
     private FirebaseFirestore db;
 
 
@@ -87,11 +88,11 @@ public class Crops extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
-
+        referenceActivity = getActivity();
         parentHolder = inflater.inflate(R.layout.fragment_one, container,
                 false);
+
         _nameofcrop = (EditText) parentHolder.findViewById(R.id._nameofcrop);
         _quantity =  (EditText)parentHolder.findViewById(R.id._quantity);
         _priceperunit = (EditText) parentHolder.findViewById(R.id._priceperunit);
@@ -120,14 +121,25 @@ public class Crops extends Fragment {
                 String quality = _quality.getText().toString().trim();
 
 
-                saveToFirestore(cropid,nameofcrop, quantity, priceperunit, expirydate, phonenumber, address, quality);
+                saveToFirestore(cropid,nameofcrop,quantity,priceperunit,expirydate,phonenumber,address,quality);
 
 
             }
         });
 
-        return inflater.inflate(R.layout.fragment_one, container, false);
+
+
+        return parentHolder;
     }
+
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        // Inflate the layout for this fragment
+//
+//
+//
+//       return inflater.inflate(R.layout.fragment_one, container, false);
+//    }}
 
     private void saveToFirestore(String cropid,String nameofcrop, String quantity, String priceperunit, String expirydate, String phonenumber, String address, String quality) {
 
@@ -149,7 +161,7 @@ public class Crops extends Fragment {
                 public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(getActivity(), "Added Successfully!", Toast.LENGTH_SHORT).show();
-
+                  //  referenceActivity.recreate();
                     }
 
                 }
