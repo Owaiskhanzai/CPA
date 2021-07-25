@@ -1,6 +1,7 @@
 package com.example.cpa;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -15,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,7 +27,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -33,13 +38,21 @@ import java.util.UUID;
  * Use the {@link Crops#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class Crops extends Fragment {
 
+    private Context myContext = null;
+
+    public Crops(Context ctx){
+        myContext = ctx;
+    }
     EditText _nameofcrop, _quantity, _priceperunit, _expirydate, _phonenumber, _address, _quality;
-    Spinner _typesofcropspinner;
+//    Spinner _typesofcropspinner;
     Button submitbtn;
     View parentHolder;
     Activity referenceActivity;
+
+
     private FirebaseFirestore db;
 
 
@@ -100,7 +113,31 @@ public class Crops extends Fragment {
         _phonenumber =  (EditText)parentHolder.findViewById(R.id._phonenumber);
         _address =  (EditText)parentHolder.findViewById(R.id._address);
         _quality = (EditText) parentHolder.findViewById(R.id._quality);
-        _typesofcropspinner =  parentHolder.findViewById(R.id._typesofcropspinner);
+
+        String [] values =
+                {"Agronomy","Horticulture","Seeds","Pulses","Fruits","Vegetables","Spices"};
+        Spinner _typesofcropspinner = (Spinner) parentHolder.findViewById(R.id._typesofcropspinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        _typesofcropspinner.setAdapter(adapter);
+
+
+
+
+
+
+
+//........
+//        List<String> croptypes= Arrays.asList("Agronomy","Horticulture","Seeds","Pulses","Fruits","Vegetables","Spices");
+//
+//        final Spinner _typesofcropspinner=(Spinner) parentHolder.findViewById(R.id._typesofcropspinner);
+//
+////
+////       ArrayAdapter arrayAdapter=new ArrayAdapter(referenceActivity.getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,croptypes);
+////        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+////
+////        _typesofcropspinner.setAdapter(arrayAdapter);
+//......
 
         submitbtn =  (Button) parentHolder.findViewById(R.id.submitbtn);
 
@@ -119,9 +156,17 @@ public class Crops extends Fragment {
                 String phonenumber = _phonenumber.getText().toString().trim();
                 String address = _address.getText().toString().trim();
                 String quality = _quality.getText().toString().trim();
+                String croptypes=_typesofcropspinner.getSelectedItem().toString();
 
+                saveToFirestore(cropid,croptypes,nameofcrop,quantity,priceperunit,expirydate,phonenumber,address,quality);
 
-                saveToFirestore(cropid,nameofcrop,quantity,priceperunit,expirydate,phonenumber,address,quality);
+                _nameofcrop.setText("");
+                _quantity .setText("");
+                _priceperunit .setText("");
+                _expirydate .setText("");
+                _phonenumber .setText("");
+                _address .setText("");
+                _quality .setText("");
 
 
             }
@@ -141,7 +186,7 @@ public class Crops extends Fragment {
 //       return inflater.inflate(R.layout.fragment_one, container, false);
 //    }}
 
-    private void saveToFirestore(String cropid,String nameofcrop, String quantity, String priceperunit, String expirydate, String phonenumber, String address, String quality) {
+    private void saveToFirestore(String cropid,String nameofcrop, String croptypes, String quantity, String priceperunit, String expirydate, String phonenumber, String address, String quality) {
 
 
         if (!nameofcrop.isEmpty() && !quantity.isEmpty() && !priceperunit.isEmpty() && !expirydate.isEmpty() && !phonenumber.isEmpty() && !address.isEmpty() && !quality.isEmpty()) {
@@ -149,12 +194,14 @@ public class Crops extends Fragment {
 
             HashMap<String,Object> map=new HashMap<>();
             map.put("nameofcrop",nameofcrop);
+            map.put("Typeofcrops",croptypes);
             map.put("quantity",quantity);
             map.put("priceperunit",priceperunit);
             map.put("expirydate",expirydate);
             map.put("phonenumber",phonenumber);
             map.put("address",address);
             map.put("quality",quality);
+
 
             db.collection("crops").document(cropid).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override

@@ -9,4 +9,14 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+    <string-array name="cropt">
+        <item>Agronomy</item>
+        <item>Horticulture</item>
+        <item>Seeds</item>
+        <item>Pulses</item>
+        <item>Fruits</item>
+        <item>Vegetables</item>
+        <item>Seeds</item>
+    </string-array>
+
 </resources>
