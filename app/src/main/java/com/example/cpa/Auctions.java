@@ -3,10 +3,16 @@ package com.example.cpa;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.firebase.database.Query;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +20,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Auctions extends Fragment {
+
+
+    private View AuctionView;
+    private RecyclerView Auction_list;
+    private FirebaseFirestore db;
+    CollectionReference query = db.collection("crops");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +71,18 @@ public class Auctions extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_two, container, false);
+         AuctionView= inflater.inflate(R.layout.fragment_two, container, false);
+
+        Auction_list=(RecyclerView)AuctionView.findViewById(R.id.auction_list);
+        Auction_list.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+        FirestoreRecyclerOptions<Auctions> response = new FirestoreRecyclerOptions.Builder<FriendsResponse>()
+                .setQuery(query, Auctions.class)
+                .build();
+
+
+    return AuctionView;
     }
+
 }
