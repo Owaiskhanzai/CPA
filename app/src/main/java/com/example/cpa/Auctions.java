@@ -2,6 +2,7 @@ package com.example.cpa;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,8 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.google.firebase.database.Query;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.Query;
+
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -23,9 +28,13 @@ public class Auctions extends Fragment {
 
 
     private View AuctionView;
+
     private RecyclerView Auction_list;
+
     private FirebaseFirestore db;
-    CollectionReference query = db.collection("crops");
+
+    private FirestoreRecyclerAdapter adapter;
+   // CollectionReference query = db.collection("crops");
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,16 +82,98 @@ public class Auctions extends Fragment {
         // Inflate the layout for this fragment
          AuctionView= inflater.inflate(R.layout.fragment_two, container, false);
 
+
+         db=FirebaseFirestore.getInstance();
         Auction_list=(RecyclerView)AuctionView.findViewById(R.id.auction_list);
+        //query
+        CollectionReference query=db.collection("crops");
+        //recycler options
+
+
+        FirestoreRecyclerOptions<cropsmodel> options=new FirestoreRecyclerOptions.Builder<cropsmodel>().setQuery(query,cropsmodel.class).build();
+
+         adapter= new FirestoreRecyclerAdapter<cropsmodel, cropsviewholder>(options) {
+            @NonNull
+            @Override
+            public cropsviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_single,parent,false);
+
+                return new cropsviewholder(view);
+
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull cropsviewholder holder, int position, @NonNull cropsmodel model) {
+
+                holder.nameofcrop.setText(model.getNameofcrop());
+                holder.quantity.setText(model.getQuantity());
+                holder.priceperunit.setText(model.getPriceperunit());
+                holder.expirydate.setText(model.getExpirydate());
+                holder.phonenumber.setText(model.getPhonenumber());
+                holder.address.setText(model.getAddress());
+                holder.quality.setText(model.getQuality());
+                holder.croptypes.setText(model.getCroptypes());
+
+            }
+        };
+
+
+        Auction_list.setHasFixedSize(true);
         Auction_list.setLayoutManager(new LinearLayoutManager(getContext()));
+        Auction_list.setAdapter(adapter);
 
 
-        FirestoreRecyclerOptions<Auctions> response = new FirestoreRecyclerOptions.Builder<FriendsResponse>()
-                .setQuery(query, Auctions.class)
-                .build();
+
+//        Auction_list=(RecyclerView)AuctionView.findViewById(R.id.auction_list);
+//        Auction_list.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
 
 
     return AuctionView;
     }
 
+    private class cropsviewholder extends RecyclerView.ViewHolder {
+
+        private TextView nameofcrop;
+        private TextView quantity;
+        private TextView priceperunit;
+        private TextView expirydate;
+        private TextView phonenumber;
+        private TextView address;
+        private TextView quality;
+        private TextView croptypes;
+
+        public cropsviewholder(@NonNull View itemView) {
+            super(itemView);
+
+            nameofcrop=itemView.findViewById(R.id.nameofcrop);
+            quantity=itemView.findViewById(R.id.quantity);
+            priceperunit=itemView.findViewById(R.id.priceperunit);
+            expirydate=itemView.findViewById(R.id.expirydate);
+            phonenumber=itemView.findViewById(R.id.phonenumber);
+            address=itemView.findViewById(R.id.address);
+            quality=itemView.findViewById(R.id.quality);
+            croptypes=itemView.findViewById(R.id.croptypes);
+
+
+
+
+
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
+
+    }
 }
