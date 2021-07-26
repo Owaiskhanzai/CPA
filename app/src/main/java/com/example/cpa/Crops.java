@@ -164,9 +164,10 @@ public class Crops extends Fragment {
                 _quantity .setText("");
                 _priceperunit .setText("");
                 _expirydate .setText("");
+                _quality .setText("");
+                _quality .setText("");
                 _phonenumber .setText("");
                 _address .setText("");
-                _quality .setText("");
 
             }
         });
@@ -185,7 +186,7 @@ public class Crops extends Fragment {
 //       return inflater.inflate(R.layout.fragment_one, container, false);
 //    }}
 
-    private void saveToFirestore(String cropid,String nameofcrop, String croptypes, String quantity, String priceperunit, String expirydate, String phonenumber, String address, String quality) {
+    private void saveToFirestore(String cropid,String nameofcrop, String croptypes, String quantity, String priceperunit, String expirydate, String quality,String phonenumber, String address) {
 
 
         if (!nameofcrop.isEmpty() && !quantity.isEmpty() && !priceperunit.isEmpty() && !expirydate.isEmpty() && !phonenumber.isEmpty() && !address.isEmpty() && !quality.isEmpty()) {
@@ -200,6 +201,8 @@ public class Crops extends Fragment {
             map.put("quality",quality);
             map.put("phonenumber",phonenumber);
             map.put("address",address);
+
+
 
 
 
