@@ -117,6 +117,8 @@ public class Auctions extends Fragment {
 
 
             }
+
+
         };
 
 
@@ -135,7 +137,7 @@ public class Auctions extends Fragment {
     return AuctionView;
     }
 
-    private class cropsviewholder extends RecyclerView.ViewHolder {
+    private class cropsviewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView nameofcrop;
         private TextView quantity;
@@ -158,9 +160,11 @@ public class Auctions extends Fragment {
             phonenumber=itemView.findViewById(R.id.phonenumber);
             address=itemView.findViewById(R.id.address);
 
+                itemView.setOnClickListener(this);
+        }
 
-
-
+        @Override
+        public void onClick(View v) {
 
 
 
@@ -180,4 +184,5 @@ public class Auctions extends Fragment {
         adapter.stopListening();
 
     }
+
 }
