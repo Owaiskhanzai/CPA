@@ -158,7 +158,7 @@ public class Crops extends Fragment {
                 String quality = _quality.getText().toString().trim();
                 String croptypes=_typesofcropspinner.getSelectedItem().toString();
 
-                saveToFirestore(cropid,croptypes,nameofcrop,quantity,priceperunit,expirydate,phonenumber,address,quality);
+                saveToFirestore(cropid,nameofcrop,croptypes,quantity,priceperunit,expirydate,quality,phonenumber,address);
 
                 _nameofcrop.setText("");
                 _quantity .setText("");
@@ -167,7 +167,6 @@ public class Crops extends Fragment {
                 _phonenumber .setText("");
                 _address .setText("");
                 _quality .setText("");
-
 
             }
         });
@@ -194,13 +193,14 @@ public class Crops extends Fragment {
 
             HashMap<String,Object> map=new HashMap<>();
             map.put("nameofcrop",nameofcrop);
-            map.put("Typeofcrops",croptypes);
+            map.put("croptypes",croptypes);
             map.put("quantity",quantity);
             map.put("priceperunit",priceperunit);
             map.put("expirydate",expirydate);
+            map.put("quality",quality);
             map.put("phonenumber",phonenumber);
             map.put("address",address);
-            map.put("quality",quality);
+
 
 
             db.collection("crops").document(cropid).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {

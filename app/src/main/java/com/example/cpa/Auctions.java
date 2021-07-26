@@ -106,13 +106,15 @@ public class Auctions extends Fragment {
             protected void onBindViewHolder(@NonNull cropsviewholder holder, int position, @NonNull cropsmodel model) {
 
                 holder.nameofcrop.setText(model.getNameofcrop());
+                holder.croptypes.setText(model.getCroptypes());
                 holder.quantity.setText(model.getQuantity());
                 holder.priceperunit.setText(model.getPriceperunit());
                 holder.expirydate.setText(model.getExpirydate());
+                holder.quality.setText(model.getQuality());
                 holder.phonenumber.setText(model.getPhonenumber());
                 holder.address.setText(model.getAddress());
-                holder.quality.setText(model.getQuality());
-                holder.croptypes.setText(model.getCroptypes());
+
+
 
             }
         };
@@ -148,13 +150,15 @@ public class Auctions extends Fragment {
             super(itemView);
 
             nameofcrop=itemView.findViewById(R.id.nameofcrop);
+            croptypes=itemView.findViewById(R.id.croptypes);
             quantity=itemView.findViewById(R.id.quantity);
             priceperunit=itemView.findViewById(R.id.priceperunit);
             expirydate=itemView.findViewById(R.id.expirydate);
+            quality=itemView.findViewById(R.id.quality);
             phonenumber=itemView.findViewById(R.id.phonenumber);
             address=itemView.findViewById(R.id.address);
-            quality=itemView.findViewById(R.id.quality);
-            croptypes=itemView.findViewById(R.id.croptypes);
+
+
 
 
 
