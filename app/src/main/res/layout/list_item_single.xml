@@ -1,20 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/nameofcrop"
+        android:id="@+id/nameofcrop2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:text="Name:"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/quality2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quality:"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expirydate2" />
+
+    <TextView
+        android:id="@+id/phonenumber2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact:"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quality2" />
+
+    <TextView
+        android:id="@+id/expirydate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="ExpiryDate:"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priceperunit2" />
+
+    <TextView
+        android:id="@+id/priceperunit2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PricePerUnit:"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantity2" />
+
+    <TextView
+        android:id="@+id/address2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Address:"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phonenumber2" />
+
+    <TextView
+        android:id="@+id/quantity2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Quantity:"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/croptypes2" />
+
+    <TextView
+        android:id="@+id/croptypes2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TypeOfCrop:"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameofcrop2" />
+
+    <TextView
+        android:id="@+id/nameofcrop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="24dp"
         android:text="TextView"
         android:textSize="36sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="144dp" />
+        app:layout_constraintStart_toEndOf="@+id/nameofcrop2"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/croptypes"
@@ -22,8 +98,8 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="36sp"
-        app:layout_constraintTop_toBottomOf="@+id/nameofcrop"
-        tools:layout_editor_absoluteX="144dp" />
+        app:layout_constraintEnd_toEndOf="@+id/nameofcrop"
+        app:layout_constraintTop_toBottomOf="@+id/nameofcrop" />
 
     <TextView
         android:id="@+id/phonenumber"
@@ -31,8 +107,8 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="36sp"
-        app:layout_constraintTop_toBottomOf="@+id/quality"
-        tools:layout_editor_absoluteX="144dp" />
+        app:layout_constraintEnd_toEndOf="@+id/quality"
+        app:layout_constraintTop_toBottomOf="@+id/quality" />
 
     <TextView
         android:id="@+id/expirydate"
@@ -40,8 +116,8 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="36sp"
-        app:layout_constraintTop_toBottomOf="@+id/priceperunit"
-        tools:layout_editor_absoluteX="144dp" />
+        app:layout_constraintEnd_toEndOf="@+id/priceperunit"
+        app:layout_constraintTop_toBottomOf="@+id/priceperunit" />
 
     <TextView
         android:id="@+id/priceperunit"
@@ -49,8 +125,8 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="36sp"
-        app:layout_constraintTop_toBottomOf="@+id/quantity"
-        tools:layout_editor_absoluteX="144dp" />
+        app:layout_constraintEnd_toEndOf="@+id/quantity"
+        app:layout_constraintTop_toBottomOf="@+id/quantity" />
 
     <TextView
         android:id="@+id/address"
@@ -58,8 +134,8 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="36sp"
-        app:layout_constraintTop_toBottomOf="@+id/phonenumber"
-        tools:layout_editor_absoluteX="144dp" />
+        app:layout_constraintEnd_toEndOf="@+id/phonenumber"
+        app:layout_constraintTop_toBottomOf="@+id/phonenumber" />
 
     <TextView
         android:id="@+id/quantity"
@@ -67,8 +143,8 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="36sp"
-        app:layout_constraintTop_toBottomOf="@+id/croptypes"
-        tools:layout_editor_absoluteX="144dp" />
+        app:layout_constraintEnd_toEndOf="@+id/croptypes"
+        app:layout_constraintTop_toBottomOf="@+id/croptypes" />
 
     <TextView
         android:id="@+id/quality"
@@ -76,7 +152,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="36sp"
-        app:layout_constraintTop_toBottomOf="@+id/expirydate"
-        tools:layout_editor_absoluteX="144dp" />
+        app:layout_constraintEnd_toEndOf="@+id/expirydate"
+        app:layout_constraintTop_toBottomOf="@+id/expirydate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
