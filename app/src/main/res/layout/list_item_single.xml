@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Name:"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,7 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quality:"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/expirydate2" />
 
@@ -29,7 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contact:"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quality2" />
 
@@ -39,7 +42,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:text="ExpiryDate:"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceperunit2" />
 
@@ -48,7 +52,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PricePerUnit:"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quantity2" />
 
@@ -58,7 +63,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:text="Address:"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phonenumber2" />
 
@@ -68,7 +74,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:text="Quantity:"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/croptypes2" />
 
@@ -77,6 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TypeOfCrop:"
+        android:textColor="#673AB7"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameofcrop2" />
@@ -89,7 +97,8 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="44dp"
         android:text="TextView"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/nameofcrop2"
@@ -102,7 +111,8 @@
         android:layout_marginStart="22dp"
         android:layout_marginEnd="44dp"
         android:text="TextView"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/croptypes2"
@@ -115,7 +125,8 @@
         android:layout_marginStart="86dp"
         android:layout_marginEnd="44dp"
         android:text="TextView"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/phonenumber2"
@@ -128,7 +139,8 @@
         android:layout_marginStart="41dp"
         android:layout_marginEnd="44dp"
         android:text="TextView"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/expirydate2"
@@ -141,7 +153,8 @@
         android:layout_marginStart="13dp"
         android:layout_marginEnd="44dp"
         android:text="TextView"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/priceperunit2"
@@ -154,7 +167,8 @@
         android:layout_marginStart="79dp"
         android:layout_marginEnd="44dp"
         android:text="TextView"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/address2"
@@ -167,7 +181,8 @@
         android:layout_marginStart="79dp"
         android:layout_marginEnd="44dp"
         android:text="TextView"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/quantity2"
@@ -180,10 +195,36 @@
         android:layout_marginStart="100dp"
         android:layout_marginEnd="45dp"
         android:text="TextView"
-        android:textSize="36sp"
+        android:textColor="#673AB7"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/quality2"
         app:layout_constraintTop_toBottomOf="@+id/expirydate" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="76dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="245dp"
+        android:layout_marginTop="3dp"
+        android:backgroundTint="#3F51B5"
+        android:text="Update"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="71dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#FF0707"
+        android:text="Delete"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        tools:layout_editor_absoluteY="350dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
