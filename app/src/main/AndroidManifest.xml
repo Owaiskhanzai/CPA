@@ -14,13 +14,15 @@
 
         <activity android:name=".Register" />
         <activity android:name=".Dashboard" />
-
         <activity
             android:name=".DashActivity"
             android:label="@string/title_activity_dash"
-            android:theme="@style/Theme.CPA.NoActionBar"/>
-
-        <activity android:name=".Signin">
+            android:theme="@style/Theme.CPA.NoActionBar" />
+        <activity android:name=".Signin"/>
+        <activity
+            android:name=".userActivity"
+            android:label="@string/title_activity_user"
+            android:theme="@style/Theme.CPA.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
