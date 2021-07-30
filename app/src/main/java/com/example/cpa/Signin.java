@@ -29,7 +29,9 @@ public class Signin extends Activity {
     Button loginbtn;
     TextView registerhere;
     FirebaseAuth mAuth;
+
     private FirebaseFirestore fstore;
+
      Object Buyer="Buyer";
      Object Seller="Seller";
 
@@ -51,16 +53,13 @@ public class Signin extends Activity {
             public void onClick(View v) {
 
                 startActivity(new Intent(getApplicationContext(),Register.class));
+
             }
         });
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
-
 
                 loginUser();
 
@@ -77,6 +76,7 @@ public class Signin extends Activity {
             public void onSuccess(AuthResult authResult) {
 
                 checkuserAccesslevel(mAuth.getCurrentUser().getUid());
+
                 Toast.makeText(Signin.this, "Login Successfully", Toast.LENGTH_SHORT).show();
 
             }
@@ -85,6 +85,7 @@ public class Signin extends Activity {
             public void onFailure(@NonNull Exception e) {
 
                 Toast.makeText(Signin.this, "Error!" + e.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -95,27 +96,78 @@ public class Signin extends Activity {
 
     private void checkuserAccesslevel(String uid) {
 
-        DocumentReference df=fstore.collection("user").document(uid);
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
 
-        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
+            DocumentReference df=FirebaseFirestore.getInstance().collection("user").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-                Log.d("TAG","Success"+documentSnapshot.getData());
+            df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                if(documentSnapshot.getString("usertype").equals(Seller) ){
+                    if(documentSnapshot.getString("usertype").equals(Seller) ){
 
-                    startActivity(new Intent(getApplicationContext(), DashActivity.class));
-                    finish();
+                        startActivity(new Intent(getApplicationContext(), DashActivity.class));
+                        finish();
+                    }
+                    if(documentSnapshot.getString("usertype").equals(Buyer)){
+
+                        startActivity(new Intent(getApplicationContext(), userActivity.class));
+                        finish();
+                    }
+
                 }
-                if(documentSnapshot.getString("usertype").equals(Buyer)){
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
 
-                    startActivity(new Intent(getApplicationContext(), userActivity.class));
+
+                    FirebaseAuth.getInstance().signOut();
+
+                    startActivity(new Intent(getApplicationContext(), Signin.class));
+
                     finish();
-                }
 
-            }
-        });
+                }
+            });
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+//        DocumentReference df=fstore.collection("user").document(uid);
+//
+//        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//            @Override
+//            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//
+//                Log.d("TAG","Success"+documentSnapshot.getData());
+//
+//                if(documentSnapshot.getString("usertype").equals(Seller) ){
+//
+//                    startActivity(new Intent(getApplicationContext(), DashActivity.class));
+//
+//                    finish();
+//
+//                }
+//                if(documentSnapshot.getString("usertype").equals(Buyer)){
+//
+//                    startActivity(new Intent(getApplicationContext(), userActivity.class));
+//
+//                    finish();
+//
+//                }
+//
+//            }
+//        });
 
     }
 
@@ -125,40 +177,7 @@ public class Signin extends Activity {
 
         super.onStart();
 
-        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
 
-        DocumentReference df=FirebaseFirestore.getInstance().collection("user").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-
-        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-
-                if(documentSnapshot.getString("usertype").equals(Seller) ){
-
-                    startActivity(new Intent(getApplicationContext(), DashActivity.class));
-                    finish();
-                }
-                if(documentSnapshot.getString("usertype").equals(Buyer)){
-
-                    startActivity(new Intent(getApplicationContext(), userActivity.class));
-                    finish();
-                }
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(), Signin.class));
-                finish();
-
-            }
-        });
-
-
-        }
     }
 
     protected void onDestroy() {
