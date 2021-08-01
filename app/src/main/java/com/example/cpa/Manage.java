@@ -84,9 +84,11 @@ public class Manage extends Fragment {
         signoutbtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                fauth.signOut();
-                startActivity(new Intent(referenceActivity.getApplicationContext(), Signin.class));
-               referenceActivity.finish();
+                FirebaseAuth.getInstance().signOut();
+
+                Intent intent = new Intent(getActivity(), Signin.class);
+                getActivity().finish();
+                startActivity(intent);
 
 
             }

@@ -1,11 +1,14 @@
 package com.example.cpa;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -18,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class userActivity extends AppCompatActivity {
@@ -28,22 +32,38 @@ public class userActivity extends AppCompatActivity {
     private FirebaseFirestore db;
 
     private FirestoreRecyclerAdapter adapter;
+    Button signoutbtn2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
 
 
 
 
-
+        signoutbtn2=findViewById(R.id.signoutbtn2);
         db=FirebaseFirestore.getInstance();
         Auction_list=findViewById(R.id.Auction_list2);
         //query
         CollectionReference query=db.collection("crops");
         //recycler options
 
+        signoutbtn2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
+
+                FirebaseAuth.getInstance().signOut();
+
+                Intent intent = new Intent(getApplicationContext(), Signin.class);
+                finish();
+                startActivity(intent);
+
+
+            }
+        });
         FirestoreRecyclerOptions<cropsmodel> options=new FirestoreRecyclerOptions.Builder<cropsmodel>().setQuery(query,cropsmodel.class).build();
 
         adapter= new FirestoreRecyclerAdapter<cropsmodel, userActivity.cropsviewholder>(options) {

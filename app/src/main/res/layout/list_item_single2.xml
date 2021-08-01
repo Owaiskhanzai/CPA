@@ -95,12 +95,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="116dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="44dp"
         android:text="TextView"
         android:textColor="#673AB7"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/nameofcrop2"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -108,104 +105,76 @@
         android:id="@+id/croptypes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="44dp"
         android:text="TextView"
         android:textColor="#673AB7"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/croptypes2"
+        app:layout_constraintStart_toStartOf="@+id/nameofcrop"
         app:layout_constraintTop_toBottomOf="@+id/nameofcrop" />
 
     <TextView
         android:id="@+id/phonenumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="86dp"
-        android:layout_marginEnd="44dp"
         android:text="TextView"
         android:textColor="#673AB7"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/phonenumber2"
+        app:layout_constraintStart_toStartOf="@+id/quality"
         app:layout_constraintTop_toBottomOf="@+id/quality" />
 
     <TextView
         android:id="@+id/expirydate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginEnd="44dp"
         android:text="TextView"
         android:textColor="#673AB7"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/expirydate2"
+        app:layout_constraintStart_toStartOf="@+id/priceperunit"
         app:layout_constraintTop_toBottomOf="@+id/priceperunit" />
 
     <TextView
         android:id="@+id/priceperunit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="44dp"
         android:text="TextView"
         android:textColor="#673AB7"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/priceperunit2"
+        app:layout_constraintStart_toStartOf="@+id/quantity"
         app:layout_constraintTop_toBottomOf="@+id/quantity" />
 
     <TextView
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="79dp"
-        android:layout_marginEnd="44dp"
         android:text="TextView"
         android:textColor="#673AB7"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/address2"
+        app:layout_constraintStart_toStartOf="@+id/phonenumber"
         app:layout_constraintTop_toBottomOf="@+id/phonenumber" />
 
     <TextView
         android:id="@+id/quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="79dp"
-        android:layout_marginEnd="44dp"
         android:text="TextView"
         android:textColor="#673AB7"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/quantity2"
+        app:layout_constraintStart_toStartOf="@+id/croptypes"
         app:layout_constraintTop_toBottomOf="@+id/croptypes" />
 
     <TextView
         android:id="@+id/quality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="45dp"
         android:text="TextView"
         android:textColor="#673AB7"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/quality2"
+        app:layout_constraintStart_toStartOf="@+id/expirydate"
         app:layout_constraintTop_toBottomOf="@+id/expirydate" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="410dp"
-        android:layout_height="36dp"
+        android:layout_width="395dp"
+        android:layout_height="42dp"
         android:layout_marginTop="7dp"
         android:layout_marginEnd="11dp"
         android:backgroundTint="#FF0707"
